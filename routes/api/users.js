@@ -13,15 +13,15 @@ const validateLoginInput = require('../../validation/login');
 //Load User model
 const User = require('../../models/User');
 
-//ROUTE: GET request to API/users/test
-//DESC: Tests Users route
-//ACCESS: Public
+//ROUTE:    GET request to API/users/test
+//DESC:     Tests Users route
+//ACCESS:   Public
 router.get('/test', (req, res) => res.json({msg: "Users Works"})
 );
 
-//ROUTE: GET request to API/users/register
-//DESC: Register user
-//ACCESS: Public
+//ROUTE:    GET request to API/users/register
+//DESC:     Register user
+//ACCESS:   Public
 router.post('/register', (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -62,9 +62,9 @@ router.post('/register', (req, res) => {
         })
 });
 
-//ROUTE: GET request to API/users/login
-//DESC: Login user/Returning JWT Token
-//ACCESS: Public
+//ROUTE:    GET request to API/users/login
+//DESC:     Login user/Returning JWT Token
+//ACCESS:   Public
 router.post('/login', (req, res) => {
 
     const { errors, isValid } = validateLoginInput(req.body);
@@ -112,9 +112,9 @@ router.post('/login', (req, res) => {
         });
 });
 
-//ROUTE: GET request to API/users/current
-//DESC: Return current user
-//ACCESS: Private
+//ROUTE:    GET request to API/users/current
+//DESC:     Return current user
+//ACCESS:   Private
 router.get('/current', passport.authenticate('jwt', { session: false }), 
     (req, res) => {
         res.json(req.user);

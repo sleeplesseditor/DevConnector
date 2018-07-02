@@ -14,14 +14,14 @@ const Profile = require('../../models/Profile');
 //Load User Model
 const User = require('../../models/User');
 
-//ROUTE: GET request to API/profile/test
-//DESC: Tests profile route
-//ACCESS: Public
+//ROUTE:    GET request to API/profile/test
+//DESC:     Tests profile route
+//ACCESS:   Public
 router.get('/test', (req, res) => res.json({msg: "Profile Works"}));
 
-//ROUTE: GET request to API/profile
-//DESC: Get current user's profile
-//ACCESS: Private
+//ROUTE:    GET request to API/profile
+//DESC:     Get current user's profile
+//ACCESS:   Private
 router.get(
     '/', 
     passport.authenticate('jwt', { session: false }), 
@@ -41,9 +41,9 @@ router.get(
     }
 );
 
-//ROUTE: GET request to API/profile/all
-//DESC: Get all profiles
-//ACCESS: Public
+//ROUTE:    GET request to API/profile/all
+//DESC:     Get all profiles
+//ACCESS:   Public
 router.get('/all', (req, res) => {
     const errors = {};
 
@@ -62,9 +62,9 @@ router.get('/all', (req, res) => {
         );
 });
 
-//ROUTE: GET request to API/profile/handle/:handle
-//DESC: Get profile by handle
-//ACCESS: Public
+//ROUTE:    GET request to API/profile/handle/:handle
+//DESC:     Get profile by handle
+//ACCESS:   Public
 router.get('/handle/:handle', (req, res) => {
     const errors = {};
 
@@ -80,9 +80,9 @@ router.get('/handle/:handle', (req, res) => {
         .catch(err => res.status(404).json(err));
 });
 
-//ROUTE: GET request to API/profile/user/:user_id
-//DESC: Get profile by user ID
-//ACCESS: Public
+//ROUTE:    GET request to API/profile/user/:user_id
+//DESC:     Get profile by user ID
+//ACCESS:   Public
 router.get('/user/user_id', (req, res) => {
     const errors = {};
 
@@ -100,9 +100,9 @@ router.get('/user/user_id', (req, res) => {
         );
 });
 
-//ROUTE: POST request to API/profile
-//DESC: Create or edit user profile
-//ACCESS: Private
+//ROUTE:    POST request to API/profile
+//DESC:     Create or edit user profile
+//ACCESS:   Private
 router.post(
     '/', 
     passport.authenticate('jwt', { session: false }), 
@@ -164,9 +164,9 @@ router.post(
     }
 );
 
-//ROUTE: POST request to API/profile/experience
-//DESC: Add experience to profile
-//ACCESS: Private
+//ROUTE:    POST request to API/profile/experience
+//DESC:     Add experience to profile
+//ACCESS:   Private
 router.post(
     '/experience', 
     passport.authenticate('jwt', { session: false }), 
@@ -198,9 +198,9 @@ router.post(
             })    
 });
 
-//ROUTE: POST request to API/profile/education
-//DESC: Add education to profile
-//ACCESS: Private
+//ROUTE:    POST request to API/profile/education
+//DESC:     Add education to profile
+//ACCESS:   Private
 router.post(
     '/education', 
     passport.authenticate('jwt', { session: false }), 
@@ -232,9 +232,9 @@ router.post(
             })    
 });
 
-//ROUTE: DELETE request to API/profile/experience/:exp_id
-//DESC: Delete experience from profile
-//ACCESS: Private
+//ROUTE:    DELETE request to API/profile/experience/:exp_id
+//DESC:     Delete experience from profile
+//ACCESS:   Private
 router.delete(
     '/experience/:exp_id', 
     passport.authenticate('jwt', { session: false }), 
@@ -280,9 +280,9 @@ router.delete(
             .catch(err => res.status(404).json(err));    
 });
 
-//ROUTE: DELETE request to API/profile
-//DESC: Delete user and profile
-//ACCESS: Private
+//ROUTE:    DELETE request to API/profile
+//DESC:     Delete user and profile
+//ACCESS:   Private
 router.delete(
     '/', 
     passport.authenticate('jwt', { session: false }), 
