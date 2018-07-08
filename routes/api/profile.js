@@ -17,7 +17,7 @@ const User = require('../../models/User');
 //ROUTE:    GET request to API/profile/test
 //DESC:     Tests profile route
 //ACCESS:   Public
-router.get('/test', (req, res) => res.json({msg: "Profile Works"}));
+router.get('/test', (req, res) => res.json({ msg: "Profile Works" }));
 
 //ROUTE:    GET request to API/profile
 //DESC:     Get current user's profile
@@ -50,7 +50,7 @@ router.get('/all', (req, res) => {
     Profile.find()
         .populate('user', ['name', 'avatar'])
         .then(profiles => {
-            if(!profiles || profiles.length === 0) {
+            if(!profiles) {
                 errors.noprofile = 'There is no profile for this user';
                 return res.status(404).json(errors);
             }
@@ -58,7 +58,7 @@ router.get('/all', (req, res) => {
             res.json(profiles);
         })
         .catch(err => 
-            res.status(404).json({ profile: 'There is no profiles' })
+            res.status(404).json({ profile: 'There are no profiles' })
         );
 });
 
@@ -110,7 +110,7 @@ router.post(
         const { errors, isValid } = validateProfileInput(req.body);
 
         //Check Validation
-        if(!isValid) {
+        if (!isValid) {
             //Return any errors with 400 status
             return res.status(400).json(errors);
         }
@@ -118,17 +118,19 @@ router.post(
         //Get Fields
         const profileFields = {};
         profileFields.user = req.user.id;
-        if(req.body.handle) profileFields.handle = req.body.handle;
-        if(req.body.company) profileFields.company = req.body.company;
-        if(req.body.website) profileFields.website = req.body.website;
-        if(req.body.location) profileFields.location = req.body.location;
-        if(req.body.bio) profileFields.bio = req.body.bio;
-        if(req.body.status) profileFields.status = req.body.status;
-        if(req.body.githubusername) profileFields.githubusername = req.body.githubusername;
+        if (req.body.handle) profileFields.handle = req.body.handle;
+        if (req.body.company) profileFields.company = req.body.company;
+        if (req.body.website) profileFields.website = req.body.website;
+        if (req.body.location) profileFields.location = req.body.location;
+        if (req.body.bio) profileFields.bio = req.body.bio;
+        if (req.body.status) profileFields.status = req.body.status;
+        if (req.body.githubusername)
+            profileFields.githubusername = req.body.githubusername;
         //Skills – split into array
-        if(typeof req.body.skills !== 'undefined') {
+        if (typeof req.body.skills !== 'undefined') {
             profileFields.skills = req.body.skills.split(',');
         }
+
         //Social Links
         profileFields.social = {};
         if(req.body.youtube) profileFields.social.youtube = req.body.youtube;
@@ -139,7 +141,7 @@ router.post(
     
         Profile.findOne({ user: req.user.id })
             .then(profile => {
-                if(profile) {
+                if (profile) {
                     //Update
                     Profile.findOneAndUpdate(
                         { user: req.user.id }, 
@@ -160,7 +162,7 @@ router.post(
                         new Profile(profileFields).save().then(profile => res.json(profile));
                     });
                 }
-            })
+            });
     }
 );
 

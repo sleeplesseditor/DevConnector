@@ -57,10 +57,10 @@ router.post('/register', (req, res) => {
                             .save()
                             .then(user => res.json(user))
                             .catch(err => console.log(err));
-                    })
+                    });
                 });
             }
-        })
+        });
 });
 
 //ROUTE:    GET request to API/users/login
@@ -104,12 +104,13 @@ router.post('/login', (req, res) => {
                                     success: true,
                                     token: 'Bearer ' + token
                                 });
-                        });
+                            }
+                        );
                     } else {
                         errors.password = 'Password incorrect';
                         return res.status(400).json(errors);
                     }
-                })
+                });
         });
 });
 
@@ -118,7 +119,11 @@ router.post('/login', (req, res) => {
 //ACCESS:   Private
 router.get('/current', passport.authenticate('jwt', { session: false }), 
     (req, res) => {
-        res.json(req.user);
+        res.json({
+            id: req.user.id,
+            name: req.user.name,
+            email: req.user.email
+        });
     }
 );
 
