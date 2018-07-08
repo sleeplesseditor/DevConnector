@@ -75,7 +75,7 @@ class AddExperience extends Component {
                             <small className="d-block pb-3">* = required fields</small>
                             <form onSubmit={this.onSubmit}>
                                 <TextFieldGroup
-                                    placeholder="Company"
+                                    placeholder="* Company"
                                     name="company"
                                     value={this.state.company}
                                     onChange={this.onChange}
@@ -133,7 +133,7 @@ class AddExperience extends Component {
                                     placeholder="Job Description"
                                     name="description"
                                     value={this.state.description}
-                                    onChange={this.description}
+                                    onChange={this.onChange}
                                     error={errors.description}
                                     info="Tell us about the position"
                                 />
@@ -162,4 +162,6 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { addExperience })(withRouter(AddExperience));
+export default connect(mapStateToProps, { addExperience })(
+    withRouter(AddExperience)
+);

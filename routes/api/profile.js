@@ -181,7 +181,7 @@ router.post(
             return res.status(400).json(errors);
         }
         
-        Profile.findOne({ user: req.user_id })
+        Profile.findOne({ user: req.user.id })
             .then(profile => {
                 const newExp = {
                     title: req.body.title,
@@ -215,7 +215,7 @@ router.post(
             return res.status(400).json(errors);
         }
         
-        Profile.findOne({ user: req.user_id })
+        Profile.findOne({ user: req.user.id })
             .then(profile => {
                 const newEdu = {
                     school: req.body.school,
@@ -231,8 +231,9 @@ router.post(
                 profile.education.unshift(newEdu);
 
                 profile.save().then(profile => res.json(profile));
-            })    
-});
+            });    
+    }
+);
 
 //ROUTE:    DELETE request to API/profile/experience/:exp_id
 //DESC:     Delete experience from profile
@@ -242,7 +243,7 @@ router.delete(
     passport.authenticate('jwt', { session: false }), 
     (req, res) => {
         
-        Profile.findOne({ user: req.user_id })
+        Profile.findOne({ user: req.user.id })
             .then(profile => {
                 //Get remove index
                 const removeIndex = profile.experience 
