@@ -2,6 +2,8 @@ img {
   width: 100%;
 }
 
+/* Landing Page Setup */
+
 .landing {
   position: relative;
   background: url('./img/showcase.jpg') no-repeat;
@@ -36,4 +38,37 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+
+/* Profile Social Links */
+
+.social-link {
+  transition: color 0.2s;
+  color: #fff;
+  text-decoration: none;
+  border: 0;
+}
+
+.social-web:hover {
+  color: #6c8174;
+}
+
+.social-twitter:hover {
+  color: #0084b4;
+}
+
+.social-facebook:hover {
+  color: #3B5998;
+}
+
+.social-linkedin:hover {
+  color: #0077b5;
+}
+
+.social-youtube:hover {
+  color: #ff0000;
+}
+
+.social-instagram:hover {
+  color: #8a3ab9;
 }
