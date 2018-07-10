@@ -33,10 +33,11 @@ router.get('/', (req, res) => {
 //DESC:     Get posts by id
 //ACCESS:   Public
 router.get('/:id', (req, res) => {
-    Post.findbyId(req.params.id)
+    Post.findById(req.params.id)
         .then(post => res.json(post))
         .catch(err => 
-            res.status(404).json({nopostfound: 'No post found with that ID'}));
+            res.status(404).json({nopostfound: 'No post found with that ID'})
+        );
 });
 
 //ROUTE:    POST request to API/posts
@@ -162,7 +163,7 @@ router.post(
             return res.status(400).json(errors);
         }
 
-        Post.findbyId(req.params.id)
+        Post.findById(req.params.id)
             .then(post => {
                 const newComment = {
                     text: req.body.text,
@@ -187,7 +188,7 @@ router.delete(
     '/comment/:id/:comment_id', 
     passport.authenticate('jwt', { session: false }), 
     (req, res) => {
-        Post.findbyId(req.params.id)
+        Post.findById(req.params.id)
             .then(post => {
                 //Check to see if comment exists
                 if(
