@@ -22,33 +22,57 @@ class ProfileHeader extends Component {
                         {isEmpty(profile.location) ? null : (<p>{profile.location}</p>)}
                         <p>
                             {isEmpty(profile.website) ? null : (
-                                <a className="social-link social-web p-2" href={profile.website} target="_blank">
-                                <i className="fas fa-globe fa-2x"></i>
+                                <a 
+                                    className="social-link social-web p-2" 
+                                    href={profile.website} 
+                                    target="_blank"
+                                >
+                                    <i className="fas fa-globe fa-2x"></i>
                                 </a>
                             )}
                             {isEmpty(profile.social && profile.social.twitter) ? null : (
-                                <a className="social-link social-twitter p-2" href={profile.social.twitter} target="_blank">
-                                <i className="fab fa-twitter fa-2x"></i>
+                                <a 
+                                    className="social-link social-twitter p-2" 
+                                    href={profile.social.twitter} 
+                                    target="_blank" 
+                                >
+                                    <i className="fab fa-twitter fa-2x"></i>
                                 </a>
                             )}
                             {isEmpty(profile.social && profile.social.facebook) ? null : (
-                                <a className="social-link social-facebook" href="#">
-                                <i className="fab fa-facebook fa-2x"></i>
+                                <a 
+                                    className="social-link social-facebook" 
+                                    href={profile.social.facebook}
+                                    target="_blank"
+                                >
+                                    <i className="fab fa-facebook fa-2x"></i>
                                 </a>
                             )}
                             {isEmpty(profile.social && profile.social.linkedin) ? null : (
-                                <a className="social-link social-linkedin" href="#">
-                                <i className="fab fa-linkedin fa-2x"></i>
+                                <a 
+                                    className="social-link social-linkedin" 
+                                    href={profile.social.linkedin}
+                                    target="_blank"
+                                >
+                                    <i className="fab fa-linkedin fa-2x"></i>
                                 </a>
                             )}
                             {isEmpty(profile.social && profile.social.youtube) ? null : (
-                                <a className="social-link social-youtube p-2" href="#">
-                                <i className="fab fa-youtube fa-2x"></i>
+                                <a 
+                                    className="social-link social-youtube p-2" 
+                                    href={profile.social.youtube}
+                                    target="_blank"
+                                >
+                                    <i className="fab fa-youtube fa-2x"></i>
                                 </a>
                             )}
                             {isEmpty(profile.social && profile.social.instagram) ? null : (
-                                <a className="social-link social-instagram p-2" href="#">
-                                <i className="fab fa-instagram fa-2x"></i>
+                                <a 
+                                    className="social-link social-instagram p-2" 
+                                    href={profile.social.instagram}
+                                    target="_blank"
+                                >
+                                    <i className="fab fa-instagram fa-2x"></i>
                                 </a>
                             )}
                         </p>
