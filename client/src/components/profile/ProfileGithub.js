@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 class ProfileGithub extends Component {
     constructor(props) {
         super(props);
+        const ghbci = require('../../config/keys');
+        const ghbcs = require('../../config/keys');
         this.state = {
-            clientId: '9aa9deee8bea02fdb0e8',
-            clientSecret: '958a4ec4ecc94421c72fb1acc954103c183df060',
+            clientId: ghbci,
+            clientSecret: ghbcs,
             count: 6,
             sort: 'author-date-asc',
             repos: []
